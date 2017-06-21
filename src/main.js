@@ -21,7 +21,12 @@ const routes = [{
   component: Home
 }, {
   path: '/time-entries',
-  component: TimeEntries
+  component: TimeEntries,
+  children: [{
+  	path: '/log-time',
+  	//懒加载
+  	component: resolve => require(['./components/LogTime.vue',resolve])
+  }]
 }]
 const router = new VueRouter({
   routes
